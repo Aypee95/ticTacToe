@@ -38,7 +38,7 @@ function initializeGame() {
   const gameCells = document.querySelectorAll(".game-cell");
   gameCells.forEach((cell) =>
     cell.addEventListener("click", () => {
-      if (cell.textContent === "") {
+      if (cell.textContent === "" && !gameOver) {
         cell.textContent = activePlay;
         board[cell.id] = activePlay;
         checkForWin();
