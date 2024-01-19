@@ -1,8 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rubik+Spray+Paint&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
   height: 100%;
+  background-color: rgb(11, 16, 22);
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
@@ -13,11 +19,16 @@ body {
   flex-direction: column;
 }
 
+
+
 .game-table,
 .game-cell {
-  border: 1px solid black;
+  border: 10px solid black;
   border-collapse: collapse;
+  border-color: aliceblue;
+  background-color: rgb(16, 15, 20);
 }
+
 
 .game-cell {
   width: 10rem;
@@ -31,6 +42,15 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-family: "Rubik Spray Paint", system-ui;
+}
+
+.game-cell:hover {
+  background-color: rgb(47, 44, 58);
+}
+
+.winning-cell {
+  background-color: rgb(11, 189, 85);
 }
 
 .gameover-message {
@@ -41,10 +61,19 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-weight: bold;
 }
 
 .restart-button {
-    padding: 0.75rem;
-    margin: 1rem;
-    cursor: pointer;
+  padding: 0.75rem;
+  margin: 1rem;
+  cursor: pointer;
+  border-style: hidden;
+  background-color: white;
+  border-radius: 5%;
+  font-weight: bold;
+}
+
+.restart-button:hover {
+  background-color: beige;
 }

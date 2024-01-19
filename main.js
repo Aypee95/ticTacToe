@@ -5,7 +5,7 @@ const validPlays = ["X", "O"];
 let gameOver = false;
 let winningPlay = "";
 let activePlay = validPlays[0];
-
+let winningCombination = [];
 window.onload = initializeGame;
 
 function restartGame() {
@@ -13,14 +13,13 @@ function restartGame() {
   gameOver = false;
   activePlay = validPlays[0];
   winningPlay = "";
+  winningCombination = [];
   document.querySelector(".gameover-container").remove();
   document.querySelector(".game-table").remove();
   initializeGame();
 }
 
 function initializeGame() {
-  // document.querySelector(".game-table").remove();
-
   const gameTable = document.createElement("table");
   gameTable.className = "game-table";
   for (let j = 0; j < 3; j++) {
@@ -51,7 +50,11 @@ function initializeGame() {
           if (winningPlay === "draw") {
             gameOverMessage.textContent = "Game Over - Draw!";
           } else {
-            gameOverMessage.textContent = `Game Over ${winningPlay} wins!`;
+            winningCombination.forEach((id) => {
+              const winningCell = document.getElementById(id);
+              winningCell.classList.add("winning-cell");
+            })
+            gameOverMessage.textContent = `Game Over - ${winningPlay} wins!`;
           }
           const restartButton = document.createElement("button");
           restartButton.textContent = "Restart";
@@ -71,6 +74,7 @@ function checkForWin() {
   if (board[0] === board[1] && board[0] === board[2] && board[0] !== "empty") {
     gameOver = true;
     winningPlay = board[0];
+    winningCombination = [0, 1, 2];
   } else if (
     board[3] === board[4] &&
     board[3] === board[5] &&
@@ -78,6 +82,7 @@ function checkForWin() {
   ) {
     gameOver = true;
     winningPlay = board[3];
+    winningCombination = [3, 4, 5];
   } else if (
     board[6] === board[7] &&
     board[6] === board[8] &&
@@ -85,6 +90,7 @@ function checkForWin() {
   ) {
     gameOver = true;
     winningPlay = board[6];
+    winningCombination = [6, 7, 8];
   } else if (
     board[0] === board[3] &&
     board[0] === board[6] &&
@@ -92,6 +98,7 @@ function checkForWin() {
   ) {
     gameOver = true;
     winningPlay = board[0];
+    winningCombination = [0, 3, 6];
   } else if (
     board[1] === board[4] &&
     board[1] === board[7] &&
@@ -99,6 +106,7 @@ function checkForWin() {
   ) {
     gameOver = true;
     winningPlay = board[1];
+    winningCombination = [1, 4, 7];
   } else if (
     board[2] === board[5] &&
     board[2] === board[8] &&
@@ -106,6 +114,7 @@ function checkForWin() {
   ) {
     gameOver = true;
     winningPlay = board[2];
+    winningCombination = [2, 5, 8];
   } else if (
     board[0] === board[4] &&
     board[0] === board[8] &&
@@ -113,6 +122,7 @@ function checkForWin() {
   ) {
     gameOver = true;
     winningPlay = board[0];
+    winningCombination = [0, 4, 8];
   } else if (
     board[2] === board[4] &&
     board[2] === board[6] &&
@@ -120,6 +130,7 @@ function checkForWin() {
   ) {
     gameOver = true;
     winningPlay = board[2];
+    winningCombination = [2, 4, 6];
   }
 }
 
