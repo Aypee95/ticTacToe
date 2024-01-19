@@ -1,0 +1,50 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-table,
+.game-cell {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.game-cell {
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  font-size: 80px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.gameover-message {
+  font-size: xx-large;
+}
+
+.gameover-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.restart-button {
+    padding: 0.75rem;
+    margin: 1rem;
+    cursor: pointer;
+}
