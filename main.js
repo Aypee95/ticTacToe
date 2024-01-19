@@ -42,12 +42,17 @@ function initializeGame() {
         cell.textContent = activePlay;
         board[cell.id] = activePlay;
         checkForWin();
+        checkForDraw();
         if (gameOver) {
           const gameOverContainer = document.createElement("div");
           gameOverContainer.className = "gameover-container";
           const gameOverMessage = document.createElement("h1");
           gameOverMessage.className = "gameover-message";
-          gameOverMessage.textContent = `Game Over ${winningPlay} wins!`;
+          if (winningPlay === "draw") {
+            gameOverMessage.textContent = "Game Over - Draw!";
+          } else {
+            gameOverMessage.textContent = `Game Over ${winningPlay} wins!`;
+          }
           const restartButton = document.createElement("button");
           restartButton.textContent = "Restart";
           restartButton.className = "restart-button";
@@ -115,5 +120,12 @@ function checkForWin() {
   ) {
     gameOver = true;
     winningPlay = board[2];
+  }
+}
+
+function checkForDraw() {
+  if (!board.includes("empty") && !gameOver) {
+    gameOver = true;
+    winningPlay = "draw";
   }
 }
