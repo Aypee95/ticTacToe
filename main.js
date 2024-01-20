@@ -53,7 +53,7 @@ function initializeGame() {
             winningCombination.forEach((id) => {
               const winningCell = document.getElementById(id);
               winningCell.classList.add("winning-cell");
-            })
+            });
             gameOverMessage.textContent = `Game Over - ${winningPlay} wins!`;
           }
           const restartButton = document.createElement("button");
